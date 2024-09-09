@@ -258,7 +258,7 @@ class Sanitize; class CSS
       name.slice!(0) if name =~ /\A[*_]/
     end
 
-    return nil unless @config[:properties].include?(name)
+    return nil unless @config[:properties].include?(name) || name.start_with?('--') # Allow CSS variables
 
     nodes          = prop[:children].dup
     combined_value = String.new
